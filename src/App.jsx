@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Search, Play, Plus, Bookmark, Film, Clapperboard, X, ExternalLink, LoaderCircle } from 'lucide-react';
 
 const demoTitles = [

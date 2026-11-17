@@ -69,7 +69,7 @@ export default function App() {
     setActive(item); setDetailData(null); setProviders([]); setProviderLink(''); setDetailLoading(true);
     try {
       const params = new URLSearchParams({ action: 'details', id: String(item.id), type: item.media_type || 'movie' });
-      const response = await fetch(`/api/tmdb?${params.toString()}`);
+      const response = await fetch(`${TMDB_API}?${params.toString()}`);
       if (response.ok) {
         const data = await response.json();
         setDetailData(data);

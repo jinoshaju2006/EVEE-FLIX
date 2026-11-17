@@ -1,4 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
+import { Capacitor } from '@capacitor/core';
+
+const TMDB_API = Capacitor.isNativePlatform() ? 'https://evee-flix.vercel.app/api/tmdb' : '/api/tmdb';
 import { Search, Play, Plus, Bookmark, Film, Clapperboard, X, ExternalLink, LoaderCircle } from 'lucide-react';
 
 const demoTitles = [
@@ -39,7 +42,7 @@ export default function App() {
         const params = new URLSearchParams();
         params.set('action', query.trim() ? 'search' : 'popular');
         if (query.trim()) params.set('q', query.trim());
-        const response = await fetch(`/api/tmdb?${params.toString()}`);
+        const response = await fetch(`${TMDB_API}?${params.toString()}`);
         if (!response.ok) throw new Error('Catalogue API is not configured yet');
         const data = await response.json();
         if (!cancelled) {

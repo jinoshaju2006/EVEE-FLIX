@@ -16,7 +16,7 @@ export default async function handler(req, res) {
     params.set('query', String(q));
     params.set('include_adult', 'false');
   } else if (action === 'details') {
-    if (!/^\\d+$/.test(String(id)) || !['movie', 'tv'].includes(String(type))) return res.status(400).json({ error: 'Invalid title reference' });
+    if (!/^\d+$/.test(String(id)) || !['movie', 'tv'].includes(String(type))) return res.status(400).json({ error: 'Invalid title reference' });
     path = `/3/${type}/${id}`;
     params.set('append_to_response', 'credits,videos,watch/providers');
   } else {
